@@ -1,22 +1,14 @@
-﻿class Program
+﻿public class Program
 {
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
-        var wordDatabase = new WordDatabase();
+        WordDatabase db = new WordDatabase();
 
-        // Ścieżka do pliku z bazą danych (z użyciem podwójnych ukośników lub @)
-        string inputFilePath = @"C:\Users\pawel\Desktop\DuplicatesEraser\WordDatabaseApp\word_database.txt";  // Możesz zaktualizować tę ścieżkę
-        string outputFilePath = @"C:\Users\pawel\Desktop\DuplicatesEraser\WordDatabaseApp\word_database_processed.txt";  // Możesz zaktualizować tę ścieżkę
+        string loadFilePath = @"C:\Users\pawel\Desktop\Words\CrosswordDatabase\WordDatabaseApp\word_database.txt";
+        string saveFilePath = @"C:\Users\pawel\Desktop\Words\CrosswordDatabase\WordDatabaseApp\word_database_process.txt";
 
-        // Wczytanie bazy słów z pliku
-        wordDatabase.LoadDatabase(inputFilePath);
-
-        // Wyświetlanie bazy słów
-        wordDatabase.DisplayWords();
-
-        // Zapisanie bazy do nowego pliku (po usunięciu duplikatów)
-        wordDatabase.SaveDatabase(outputFilePath);
-
-        Console.WriteLine("Proces zakończony.");
+        db.LoadDatabase(loadFilePath);
+        db.DisplayWords();
+        db.SaveDatabase(saveFilePath);
     }
 }

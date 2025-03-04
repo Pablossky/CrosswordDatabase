@@ -5,12 +5,13 @@ using System.Text.RegularExpressions;
 
 public class WordDatabase
 {
-    public Dictionary<string, string> Words { get; private set; }
+    public Dictionary<string, (string Clue, string Difficulty)> Words { get; private set; }
 
     public WordDatabase()
     {
-        Words = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        Words = new Dictionary<string, (string Clue, string Difficulty)>(StringComparer.OrdinalIgnoreCase);
     }
+
     public void LoadDatabase(string filePath)
     {
         if (!File.Exists(filePath))
@@ -21,8 +22,8 @@ public class WordDatabase
 
         var lines = File.ReadAllLines(filePath);
 
-        //format { "HASŁO", "PODPOWIEDŹ" }
-        var regex = new Regex(@"{\s*""([^""]+)""\s*,\s*""([^""]+)""\s*}");
+        // Format: "WORD", "CLUE", "HARD" (optional)
+        var regex = new Regex(@"\s*""([^""]+)""\s*,\s*""([^""]+)""\s*(,\s*""([^""]+)"")?\s*");
 
         foreach (var line in lines)
         {
@@ -31,11 +32,9 @@ public class WordDatabase
             {
                 string word = match.Groups[1].Value.Trim();
                 string clue = match.Groups[2].Value.Trim();
+                string difficulty = match.Groups[4].Success ? match.Groups[4].Value.Trim() : string.Empty;
 
-                if (!Words.ContainsKey(word))
-                {
-                    Words[word] = clue;
-                }
+                Words[word] = (clue, difficulty);
             }
         }
 
@@ -43,32 +42,37 @@ public class WordDatabase
     }
 
     public void SaveDatabase(string filePath)
-{
-    var lines = new List<string>();
-
-    var lastIndex = Words.Count - 1;
-
-    foreach (var pair in Words.Select((pair, index) => new { pair, index }))
     {
-        string line = $"{{ \"{pair.pair.Key}\", \"{pair.pair.Value}\" }}";
-        if (pair.index != lastIndex) 
-        {
-            line += ",";  
-        }
-        lines.Add(line);
-    }
+        // Ensure the directory exists before attempting to save
+        var directory = Path.GetDirectoryName(filePath);
+        var lines = new List<string>();
 
-    File.WriteAllLines(filePath, lines);
-    Console.WriteLine("Baza słów zapisana.");
-}
+        foreach (var pair in Words)
+        {
+            if (string.IsNullOrEmpty(pair.Value.Difficulty))
+            {
+                // Save words in the format: AddWord("WORD", "CLUE");
+                lines.Add($"AddWord(\"{pair.Key}\", \"{pair.Value.Clue}\");");
+            }
+            else
+            {
+                // Save words with difficulty in the format: AddWord("WORD", "CLUE", "HARD");
+                lines.Add($"AddWord(\"{pair.Key}\", \"{pair.Value.Clue}\", \"{pair.Value.Difficulty}\");");
+            }
+        }
+
+        // Write the lines to the file
+        File.WriteAllLines(filePath, lines);
+        Console.WriteLine("Baza słów zapisana.");
+    }
 
     public void DisplayWords()
     {
         Console.WriteLine("Baza słów:");
         foreach (var pair in Words)
         {
-            Console.WriteLine($"Hasło: {pair.Key}, Podpowiedź: {pair.Value}");
+            string difficultyText = string.IsNullOrEmpty(pair.Value.Difficulty) ? "" : $", {pair.Value.Difficulty}";
+            Console.WriteLine($"Hasło: {pair.Key}, Podpowiedź: {pair.Value.Clue}{difficultyText}");
         }
     }
 }
-

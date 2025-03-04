@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pawel\\Desktop\\DuplicatesEraser\\WordDatabaseApp\\WordDatabaseApp.csproj": {}
+    "c:\\Users\\pawel\\Desktop\\Words\\CrosswordDatabase\\WordDatabaseApp\\WordDatabaseApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pawel\\Desktop\\DuplicatesEraser\\WordDatabaseApp\\WordDatabaseApp.csproj": {
+    "c:\\Users\\pawel\\Desktop\\Words\\CrosswordDatabase\\WordDatabaseApp\\WordDatabaseApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pawel\\Desktop\\DuplicatesEraser\\WordDatabaseApp\\WordDatabaseApp.csproj",
+        "projectUniqueName": "c:\\Users\\pawel\\Desktop\\Words\\CrosswordDatabase\\WordDatabaseApp\\WordDatabaseApp.csproj",
         "projectName": "WordDatabaseApp",
-        "projectPath": "C:\\Users\\pawel\\Desktop\\DuplicatesEraser\\WordDatabaseApp\\WordDatabaseApp.csproj",
+        "projectPath": "c:\\Users\\pawel\\Desktop\\Words\\CrosswordDatabase\\WordDatabaseApp\\WordDatabaseApp.csproj",
         "packagesPath": "C:\\Users\\pawel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pawel\\Desktop\\DuplicatesEraser\\WordDatabaseApp\\obj\\",
+        "outputPath": "c:\\Users\\pawel\\Desktop\\Words\\CrosswordDatabase\\WordDatabaseApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pawel\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -20,7 +20,6 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,7 +37,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -59,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.406/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

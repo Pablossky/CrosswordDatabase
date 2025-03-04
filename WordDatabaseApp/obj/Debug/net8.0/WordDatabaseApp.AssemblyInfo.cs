@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WordDatabaseApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+90925def1e0a64ada880fe8a244616723c9c1ab3")]
 [assembly: System.Reflection.AssemblyProductAttribute("WordDatabaseApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WordDatabaseApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
